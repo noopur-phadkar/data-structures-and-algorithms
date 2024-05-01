@@ -1,4 +1,4 @@
-package binarySearchTree;
+package searching_algorithms.binarySearchTree;
 
 public class myNode {
     int value;

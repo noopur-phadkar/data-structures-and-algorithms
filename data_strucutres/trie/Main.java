@@ -1,3 +1,5 @@
+package data_strucutres.trie;
+
 import java.util.ArrayList;
 
 class trieNode{
