@@ -12,39 +12,66 @@ class Node {
 
 class Queue {
     Node rear;
-    Node head;
+    Node front;
 
     public Queue(){
         rear = null;
-        head = null;
+        front = null;
     }
 
-    public void insert(int value){
+    public void enqueue(int value){
         Node newNode = new Node(value, null);
-        if ( rear == null && head == null) {
+        if (isEmpty()) {
             rear = newNode;
-            head = newNode;
+            front = newNode;
             return;
         }
         newNode.next = rear;
         rear = newNode;
     }
 
-    public int pop() {
-        if (head == null) {
+    public int dequeue() {
+        if (isEmpty()) {
             return -1;
         }
-        Node curr = rear;
-        while (curr.next.next != null) {
-            curr = curr.next;
+        int value;
+        if (rear == front){
+            value = rear.value;
+            rear = null;
+            front = null;
+        } else {
+            Node curr = rear;
+            while (curr.next.next != null) {
+                curr = curr.next;
+            }
+            value = front.value;
+            front = curr;
         }
-        int value = head.value;
-        head = curr;
         return value;
     }
 
+    public boolean isEmpty() {
+        if (isEmpty())
+            return true;
+        return false;
+    }
+
+    public int peek_rear() {
+        if (! isEmpty()) {
+            return rear.value;
+        }
+        return -1;
+    }
+
+    public int peek_front() {
+        if (! isEmpty()) {
+            return front.value;
+        }
+        return -1;
+    }
+
     public void printQueue(){
-        if (rear == null){
+        if (isEmpty()){
             System.out.println("null");
             return;
         }
@@ -62,15 +89,15 @@ public class Main {
     public static void main(String[] args) {
         Queue queue = new Queue();
         queue.printQueue();
-        queue.insert(5);
+        queue.enqueue(5);
         queue.printQueue();
-        queue.insert(1);
+        queue.enqueue(1);
         queue.printQueue();
-        queue.insert(4);
+        queue.enqueue(4);
         queue.printQueue();
-        queue.insert(8);
+        queue.enqueue(8);
         queue.printQueue();
-        System.out.println("Value: " + queue.pop());
+        System.out.println("Value: " + queue.dequeue());
         queue.printQueue();
     }
 }
