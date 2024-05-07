@@ -92,11 +92,13 @@ public class Main {
         queue.enqueue(5);
         queue.printQueue();
         queue.enqueue(1);
+        System.out.println(queue.peek_rear());
         queue.printQueue();
         queue.enqueue(4);
         queue.printQueue();
         queue.enqueue(8);
         queue.printQueue();
+        System.out.println(queue.peek_front());
         System.out.println("Value: " + queue.dequeue());
         queue.printQueue();
     }
