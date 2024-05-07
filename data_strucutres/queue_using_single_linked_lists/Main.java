@@ -1,4 +1,4 @@
-package data_strucutres.queue;
+package data_strucutres.queue_using_single_linked_lists;
 
 class Node {
     int value;
@@ -22,8 +22,7 @@ class Queue {
     public void enqueue(int value){
         Node newNode = new Node(value, null);
         if (isEmpty()) {
-            rear = newNode;
-            front = newNode;
+            rear = front = newNode;
             return;
         }
         newNode.next = rear;
@@ -37,8 +36,7 @@ class Queue {
         int value;
         if (rear == front){
             value = rear.value;
-            rear = null;
-            front = null;
+            rear = front = null;
         } else {
             Node curr = rear;
             while (curr.next.next != null) {
